@@ -43,12 +43,15 @@ int main()
         edges[y].push_back(x);
     }
 
-    dfs(1, -1);
+    for(int i=1; i<=n; i++)
+    {
+    	if(!visited[i])    dfs(i, -1);
+    }
 
     printf("Articulation points:");
     for(int i=1; i<=n; i++)
     {
-    	if(articulation_point[i])	printf(" %d", i);
+    	if(articulation_point[i])    printf(" %d", i);
     }
     puts("");
 
