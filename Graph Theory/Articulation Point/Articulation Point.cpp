@@ -8,7 +8,7 @@ bool articulation_point[MXN], visited[MXN];
 int discovery[MXN], low[MXN], tym;
 int n, m;
 
-void dfs(int s, int p)
+void get_articulation_points(int s, int p)
 {
     visited[s] = true;
     discovery[s] = low[s] = ++tym;
@@ -21,7 +21,7 @@ void dfs(int s, int p)
 	else
 	{
 	    child++;
-	    dfs(x, s);
+	    get_articulation_points(x, s);
 	    low[s] = min(low[s], low[x]);
 
 	    if(p != -1 && discovery[s] <= low[x])    articulation_point[s] = true;
@@ -45,7 +45,7 @@ int main()
 
     for(int i=1; i<=n; i++)
     {
-    	if(!visited[i])    dfs(i, -1);
+    	if(!visited[i])    get_articulation_points(i, -1);
     }
 
     printf("Articulation points:");
